@@ -20,3 +20,29 @@ def comprehension_list_dot_product(a, b):
 
 def BLAS_dot_product(a, b):
     return np.dot(a, b)
+
+
+if __name__ == '__main__':
+    from time import time
+
+    length = 10**7
+
+    a, b = init_2_vectors(length)
+
+    t0 = time()
+    print(
+        '\n\tdot =', for_loop_dot_product(a, b),
+        f'\n\tFor loop runtime: {round(time()-t0, 3)}'
+    )
+
+    t0 = time()
+    print(
+        '\n\tdot =', comprehension_list_dot_product(a, b),
+        f'\n\tComprehension list loop runtime: {round(time()-t0, 3)}'
+    )
+
+    t0 = time()
+    print(
+        '\n\tdot =', BLAS_dot_product(a, b),
+        f'\n\tNumPy (BLAS): {round(time()-t0, 3)}\n'
+    )

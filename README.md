@@ -36,8 +36,22 @@ By running the `20_get_spectra.py` script, for each song in `data`, you will seq
     
     ./scr/$ time python 20_get_spectra.py
 
-We will paralelize this script using `multiprocessing`, `pymp` and `mpi4py` libraries.
+We will paralelize using:
 
 #### `multiprocessing`
 
 We proceed as we did with example 1, creating a `Pool` of processes. In this case, if in OSx this program will most probably crash. There is a conflict with `matplotlib.pyplot` library and the way the processes are spawned or forked in the system, this is a known [bug](https://bugs.python.org/issue33725). 
+
+#### `pymp`
+
+[PyMP](https://github.com/classner/pymp) package brings OpenMP-like functionality to Python, hiding the use of `multiprocessing` library. Using `pymp` package the reference to this problem is printed out once, but the problem is solved internally by `pymp` and the execution continues without problem. Measure the execution time of this script:
+
+    ./scr/$ time python 22_get_spectra_pymp.py
+
+#### `MPI` and `mpi4py`
+
+`MPI`, the Message Passing Interface, is a non-pythonian system, that you can [download](http://www.mpich.org/downloads/) and installed in your machine. `mpi4py` is the python library that let your program communicate with `MPI`. Both `MPI` and `MPI4Py` are already installed at [Kabré supercomputer](https://kabre.cenat.ac.cr/). Compare the execution time of `mpi4py` vs `pymp` (`mulitprocessing`)
+
+
+    ./scr/$ time python 22_get_spectra_pymp.py
+    ./scr/$ time python 23_get_spectra_MPI.py

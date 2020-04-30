@@ -1,24 +1,20 @@
-print('\n', ' multiprocessing '.center(72, '='))
-
 # Python Standard Library
 from os import listdir
-from multiprocessing import Pool
+from multiprocessing import Pool, cpu_count
 from itertools import repeat
 
 # Local files
 import spectra
 
 datapath = '../data/'
-outpath  = '../out/'
 
 filenames = [filename for filename in listdir(datapath) if filename[-3:] == 'wav']
 
-def calc_plot_spectrum(datapath, filename, outpath):
+def calc_plot_spectrum(datapath, filename):
     print('\n\t', filename)
     frequency, amplitude = spectra.compute_FFT(datapath+filename)
-    spectra.create_figure(outpath, filename[:-3], frequency, amplitude)
+    spectra.create_figure(datapath, filename[:-3], frequency, amplitude)
 
-pool = Pool(2)
-pool.starmap(calc_plot_spectrum, zip(repeat(datapath), filenames, repeat(outpath)))
-pool.close()
-pool.join()
+with Pool(cpu_count()) as pool:
+    pool = Pool(cpu_count())
+    pool.starmap(calc_plot_spectrum, zip(repeat(datapath), filenames))

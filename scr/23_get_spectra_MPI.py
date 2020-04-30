@@ -1,5 +1,3 @@
-
-
 # Python Standard Library
 from os import listdir
 
@@ -12,7 +10,6 @@ from mpi4py import MPI
 
 
 datapath = '../data/'
-outpath  = '../out/'
 
 comm    = MPI.COMM_WORLD
 size    = comm.Get_size()
@@ -34,4 +31,4 @@ my_filenames = filenames[displs[my_rank]:displs[my_rank]+counts[my_rank]]
 for filename in my_filenames:
     print('\n\t', filename)
     frequency, amplitude = spectra.compute_FFT(datapath+filename)
-    spectra.create_figure(outpath, filename[:-3], frequency, amplitude)
+    spectra.create_figure(datapath, filename[:-3], frequency, amplitude)

@@ -1,9 +1,9 @@
 import freesound
 from threading import Thread
 
-api_key ='Jx5IEtDs0iD2HjC2Cd0y8BU7pSow2k8h2iW8jbU6'
+api_key = 'Jx5IEtDs0iD2HjC2Cd0y8BU7pSow2k8h2iW8jbU6'
 queries = ['cello', 'harmonica']
-data_path = '../data/'
+data_path = '../freesound_downloads/'
 
 client = freesound.FreesoundClient()
 client.set_token(api_key, 'token')
@@ -24,7 +24,7 @@ def download(sound, data_path):
 
 threads = []
 for query in queries:
-    thread = Thread(target=search, args=(query, sounds))
+    thread = Thread(target=search, args=(query, sounds)) # Shared memory
     threads.append(thread)
     thread.start()
 

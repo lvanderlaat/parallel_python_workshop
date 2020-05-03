@@ -8,7 +8,7 @@ All scripts are in folder `scr`. Slides in `docs`
 
 `threading` is the Python Standard Library to run shared memory concurrent jobs without the need for a multi-core architecture. Is best suited for I/O, network and database non-CPU-intensive tasks.
 
-`00_freesound_scraping.py` is a simple script to search and download sounds from the [fresound](https://freesound.org/) collaborative database. In `00_freesound_scraping_threading.py`, its a multithreaded implementation, we transform the `for` loops to functions definitions, and then initialize a `Thread` object for each queary and sound to download. Measure execution times:
+`00_freesound_scraping.py` is a simple script to search and download sounds from the [freesound](https://freesound.org/) collaborative database. In `00_freesound_scraping_threading.py`, its a multithreaded implementation, we transform the `for` loops to functions definitions, and then initialize a `Thread` object for each queary and sound to download. Measure execution times:
 
     ./scr/$ time python 00_freesound_scraping.py
     ./scr/$ time python 00_freesound_scraping_threading.py

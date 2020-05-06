@@ -7,8 +7,9 @@ import pymp # multiprocessing por dentro
 
 datapath = '../data/'
 
-filenames = pymp.shared.list([filename for filename in listdir(datapath)
-                              if filename[-3:] == 'wav'])
+filenames = [filename for filename in listdir(datapath) if filename[-3:] == 'wav']
+
+filenames = pymp.shared.list(filenames)
 
 with pymp.Parallel(4) as parallel:
     for index in parallel.range(len(filenames)):

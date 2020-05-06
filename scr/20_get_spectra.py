@@ -12,3 +12,4 @@ for filename in filenames:
     print('\n\t', filename)
     frequency, amplitude = spectra.compute_FFT(datapath+filename)
     spectra.create_figure(datapath, filename[:-3], frequency, amplitude)
+

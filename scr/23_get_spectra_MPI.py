@@ -20,7 +20,6 @@ if my_rank == 0:
     count, res =  divmod(len(filenames), size)
     counts     =  [count+1 if rank<res else count for rank in range(size)]
     displs     =  [sum(counts[:rank]) for rank in range(size)]
-
 else:
     filenames, counts, displs = None, None, None
 

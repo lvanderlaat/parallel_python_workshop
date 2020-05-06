@@ -1,8 +1,8 @@
 import freesound
 
 
-api_key = 'Jx5IEtDs0iD2HjC2Cd0y8BU7pSow2k8h2iW8jbU6'
-queries = ['cello', 'harmonica']
+api_key   = 'Jx5IEtDs0iD2HjC2Cd0y8BU7pSow2k8h2iW8jbU6'
+queries   = ['cello', 'harmonica', 'snare']
 data_path = '../freesound_downloads/'
 
 client = freesound.FreesoundClient()
